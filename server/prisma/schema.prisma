@@ -1,0 +1,18 @@
+datasource db {
+  // could be postgresql or mysql
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+generator db {
+  provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+model User {
+  id       Int    @id @default(autoincrement()) // Auto-incrementing primary key
+  email    String @unique                    // Ensure email is unique
+  username String @unique                    // Ensure username is unique
+  password String                            // Store password (hashed in your application logic)
+}
+
