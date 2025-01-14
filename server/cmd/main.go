@@ -1,11 +1,12 @@
 package main
 
 import (
-    "log"
+	"log"
 
-    "github.com/ZicorXXIX/chat/config"
-    "github.com/ZicorXXIX/chat/router"
-    "github.com/ZicorXXIX/chat/internal/user"
+	"github.com/ZicorXXIX/chat/config"
+	"github.com/ZicorXXIX/chat/internal/user"
+	"github.com/ZicorXXIX/chat/router"
+	"github.com/ZicorXXIX/chat/internal/ws"
 )
 
 func main() {
@@ -18,7 +19,11 @@ func main() {
     userSvc := user.NewService(userRep)
     userHandler := user.NewHandler(userSvc)
 
-    router.InitRouter(userHandler)
+    hub := ws.NewHub()
+    wsHandler := ws.NewHandler(hub)
+    go hub.Run()
+
+    router.InitRouter(userHandler, wsHandler)
     router.Start("0.0.0.0:8080")
 }
 
