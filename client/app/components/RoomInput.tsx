@@ -31,7 +31,7 @@ export default function RoomInput() {
 
   const joinRoom = async (id: string) => {
     const ws = new WebSocket(
-      `${WEBSOCKET_URL}/ws/${id}?userId=${user?.id}&username=${user?.username}`
+      `${WEBSOCKET_URL}/ws/joinRoom/${id}?userId=${user?.id}&username=${user?.username}`
     );
 
     if (ws.OPEN) {
@@ -117,7 +117,7 @@ export default function RoomInput() {
               </div>
               <div className="">
                 <button
-                  className="px-4 text-white bg-blue rounded-md"
+                  className="px-4 text-white bg-black rounded-md"
                   onClick={() => {
                     joinRoom(room.id);
                   }}

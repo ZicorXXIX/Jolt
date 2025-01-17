@@ -44,6 +44,7 @@ export default function App() {
     const roomId = conn.url.split("/")[5];
     async function getUsers() {
       try {
+        console.log("Room ID:", roomId);
         const res = await fetch(`${API_URL}/ws/getClients/${roomId}`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -70,7 +71,7 @@ export default function App() {
         setUsers([...users, { username: m.username }]);
       }
 
-      if (m.content == "user left the chat") {
+      if (m.content == "User left the chat") {
         const deleteUser = users.filter((user) => user.username != m.username);
         setUsers([...deleteUser]);
         setMessages([...messages, m]);
@@ -109,7 +110,7 @@ export default function App() {
             </div>
             <div className="flex items-center">
               <button
-                className="p-2 rounded-md bg-blue text-white"
+                className="p-2 rounded-md bg-black text-white"
                 onClick={sendMessage}
               >
                 Send

@@ -2,36 +2,38 @@ import { Message } from "../app/page";
 
 const Chat = ({ data }: { data: Array<Message> }) => {
   return (
-    <>
-      {data.map((message: Message, index: number) => {
-        if (message.type == "sent") {
-          return (
+    <div className="flex flex-col gap-2 p-4">
+      {data.map((message: Message, index: number) => (
+        <div
+          key={index}
+          className={`flex ${
+            message.type === "sent" ? "justify-end" : "justify-start"
+          }`}
+        >
+          <div className="max-w-[75%]">
             <div
-              className="flex flex-col mt-2 w-full text-right justify-end"
-              key={index}
+              className={`text-xs font-medium ${
+                message.type === "sent"
+                  ? "text-right text-blue-600"
+                  : "text-left text-gray-600"
+              }`}
             >
-              <div className="text-sm">{message.username}</div>
-              <div>
-                <div className="bg-blue text-white px-4 py-1 rounded-md inline-block mt-1">
-                  {message.content}
-                </div>
-              </div>
+              {message.username}
             </div>
-          );
-        } else {
-          return (
-            <div className="mt-2" key={index}>
-              <div className="text-sm">{message.username}</div>
-              <div>
-                <div className="bg-grey text-dark-secondary px-4 py-1 rounded-md inline-block mt-1">
-                  {message.content}
-                </div>
-              </div>
+            <div
+              className={`rounded-lg px-4 py-2 mt-1 text-sm shadow-md ${
+                message.type === "sent"
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-200 text-gray-800"
+              }`}
+            >
+              {message.content}
             </div>
-          );
-        }
-      })}
-    </>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
+
 export default Chat;
