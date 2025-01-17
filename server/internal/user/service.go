@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"strconv"
 	"time"
@@ -65,7 +66,9 @@ func (s *UserService) Login(ctx context.Context, req *LoginUserReq) (*LoginUserR
     ctx, cancel := context.WithTimeout(ctx, s.timeout)
     defer cancel()
 
+    fmt.Println("LoginUserReq: ", req)
     u, err := s.Repository.GetUserByEmail(ctx, req.Email)
+    fmt.Print(u)
     if err != nil {
         return &LoginUserRes{}, err
     }
