@@ -4,6 +4,7 @@ import { API_URL, WEBSOCKET_URL } from "../lib/constants";
 import { AuthContext } from "../context/AuthProvider";
 import { WebsocketContext } from "../context/WebSocketProvider";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function RoomInput() {
   const [roomName, setRoomName] = useState("");
@@ -71,7 +72,7 @@ export default function RoomInput() {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <form onSubmit={handleSubmit} className="w-full max-w-md">
+      <form onSubmit={handleSubmit} className="w-full max-w-md mb-32">
         <div className="flex flex-col items-center space-y-4">
           <div className="flex items-center w-full rounded-md overflow-hidden">
             <span className="font-mono text-lg px-2 mr-2 bg-black text-white">
@@ -103,27 +104,39 @@ export default function RoomInput() {
           </button>
         </div>
       </form>
-      <div className="mt-6">
+      <div className="mt-6 cursor-plug">
         <div className="font-bold">Available Rooms</div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6">
           {rooms.map((room, index) => (
             <div
-              key={index}
-              className="border border-blue p-4 flex items-center rounded-md w-full"
+              key={room.id}
+              className="
+               relative overflow-hidden
+               bg-white rounded-xl
+               transition-all duration-500 transform hover:scale-105 shadow-lg border border-gray-200"
             >
-              <div className="w-full">
-                <div className="text-sm">room</div>
-                <div className="text-blue font-bold text-lg">{room.name}</div>
-              </div>
-              <div className="">
-                <button
-                  className="px-4 text-white bg-black rounded-md"
-                  onClick={() => {
-                    joinRoom(room.id);
-                  }}
-                >
-                  join
-                </button>
+              <div className="p-6 h-46 w-48 flex flex-col items-center justify-center">
+                <h3 className="text-xl font-semibold text-black mb-6">
+                  {room.name}
+                </h3>
+
+                <div className="bg-black w-full flex justify-center cursor-plug-white">
+                  <button
+                    onClick={() => joinRoom(room.id)}
+                    className="
+                   w-18 h-18 
+                   flex items-center justify-center
+                   transition-all duration-500 hover:bg-white text-zinc-400 bg-zinc-400 hover:text-white cursor-plug-white"
+                  >
+                    <Image
+                      src="/socket.svg"
+                      alt="Icon"
+                      width={40}
+                      height={40}
+                      className="object-fill"
+                    />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
