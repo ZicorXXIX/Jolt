@@ -1,13 +1,13 @@
 package user
 
-import(
-    "time"
-    "context"
-    "log"
-    "strconv"
+import (
+	"context"
+	"log"
+	"strconv"
+	"time"
 
-    "github.com/ZicorXXIX/chat/util"
-    "github.com/golang-jwt/jwt/v5"
+	"github.com/ZicorXXIX/chat/util"
+	"github.com/golang-jwt/jwt/v5"
 )
 
 const (
