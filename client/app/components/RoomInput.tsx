@@ -107,7 +107,7 @@ export default function RoomInput() {
       <div className="mt-6 cursor-plug">
         <div className="font-bold">Available Rooms</div>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-6">
-          {rooms.map((room, index) => (
+          {rooms.map((room) => (
             <div
               key={room.id}
               className="

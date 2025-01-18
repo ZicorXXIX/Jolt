@@ -71,7 +71,7 @@ export default function App() {
         setUsers([...users, { username: m.username }]);
       }
 
-      if (m.content == "User left the chat") {
+      if (m.content == "user left the chat") {
         const deleteUser = users.filter((user) => user.username != m.username);
         setUsers([...deleteUser]);
         setMessages([...messages, m]);
@@ -86,9 +86,18 @@ export default function App() {
       setMessages([...messages, m]);
     };
 
-    conn.onclose = () => {};
-    conn.onerror = () => {};
-    conn.onopen = () => {};
+    conn.onerror = (error) => {
+      console.error("❌ WebSocket error:", error);
+    };
+
+    conn.onclose = (event) => {
+      console.warn(
+        `⚠️ WebSocket closed. Code: ${event.code}, Reason: ${event.reason}`
+      );
+      setTimeout(() => {
+        console.log("Reconnecting...");
+      }, 3000);
+    };
   }, [textarea, messages, conn, users]); //eslint-disable-line
 
   return (
