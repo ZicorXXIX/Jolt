@@ -20,7 +20,7 @@ func InitRouter(userHandler *user.Handler, wsHandler *ws.Handler) {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 		AllowOriginFunc: func(origin string) bool {
-			return origin == "http://localhost:3000"
+			return origin == "https://jolt-sepia.vercel.app/"
 		},
 		MaxAge: 12 * time.Hour,
 	}))
