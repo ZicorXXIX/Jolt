@@ -1,9 +1,9 @@
 package config
 
 import (
-    "log"
+	"log"
 
-    "github.com/ZicorXXIX/chat/prisma/db"
+	"github.com/ZicorXXIX/Jolt/server/prisma/db"
 )
 
 func ConnectDB() (*db.PrismaClient, error) {

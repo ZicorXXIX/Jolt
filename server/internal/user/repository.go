@@ -1,11 +1,11 @@
 package user
 
 import (
-    "context"
-    "log"
-    "fmt"
+	"context"
+	"fmt"
+	"log"
 
-    "github.com/ZicorXXIX/chat/prisma/db"
+	"github.com/ZicorXXIX/Jolt/server/prisma/db"
 )
 
 

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ZicorXXIX/chat/util"
+	"github.com/ZicorXXIX/Jolt/server/util"
 	"github.com/golang-jwt/jwt/v5"
 )
 

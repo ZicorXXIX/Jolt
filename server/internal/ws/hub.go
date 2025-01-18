@@ -45,7 +45,7 @@ func (h *Hub) Run() {
                 if _, ok := r.Clients[cl.ID]; ok {
                     // Broadcast client left message
                     h.Broadcast <- &Message{
-                        Content:  "User left the chat",
+                        Content:  "User left the Jolt/server",
                         RoomID:   cl.RoomID,
                         Username: cl.Username,
                     }

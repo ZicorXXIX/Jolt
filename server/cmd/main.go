@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/ZicorXXIX/chat/config"
-	"github.com/ZicorXXIX/chat/internal/user"
-	"github.com/ZicorXXIX/chat/router"
-	"github.com/ZicorXXIX/chat/internal/ws"
+	"github.com/ZicorXXIX/Jolt/server/config"
+	"github.com/ZicorXXIX/Jolt/server/internal/user"
+	"github.com/ZicorXXIX/Jolt/server/internal/ws"
+	"github.com/ZicorXXIX/Jolt/server/router"
 )
 
 func main() {

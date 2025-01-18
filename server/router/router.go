@@ -3,8 +3,8 @@ package router
 import (
 	"time"
 
-	"github.com/ZicorXXIX/chat/internal/user"
-	"github.com/ZicorXXIX/chat/internal/ws"
+	"github.com/ZicorXXIX/Jolt/server/internal/user"
+	"github.com/ZicorXXIX/Jolt/server/internal/ws"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
